@@ -11,6 +11,7 @@ import com.rhounsaweatherapp.db.WeatherAppDb
 import com.rhounsaweatherapp.db.dao.CityDao
 import com.rhounsaweatherapp.db.dao.WeatherDao
 import com.rhounsaweatherapp.repository.Repository
+import com.rhounsaweatherapp.ui.views.dataStore
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -49,7 +50,9 @@ class Modules {
     @Singleton
     fun weatherApi(moshi: Moshi) = Api(moshi)
 
-
+    @Provides
+    @Singleton
+    fun prefs(app: Application) = app.applicationContext.dataStore
 
     @Provides
     @Singleton

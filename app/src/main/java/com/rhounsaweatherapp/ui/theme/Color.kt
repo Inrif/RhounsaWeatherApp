@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
  * Created by rhounsa on 18/07/2022.
  */
 
+
 val LightBlue50 = Color(0xFFE1F5FE)
 val LightBlue100 = Color(0xFFE9B3FC)
 val LightBlue200 = Color(0xFF81D4FA)
@@ -21,3 +22,5 @@ val Red300 = Color(0xFFE57373)
 
 val Violet = Color(0xFF7744CA)
 val VioletDegrade = Color(0xFF0C0214)
+val White = Color(0xFFFFFFFF)
+val WhiteWithOpacity = Color(0xD2FFFFFF)
