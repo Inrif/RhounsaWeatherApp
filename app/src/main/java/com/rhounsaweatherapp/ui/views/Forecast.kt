@@ -463,13 +463,7 @@ fun setLocationRationaleHidden(scope: CoroutineScope, context: Context) {
     }
 }
 
-//fun showSourceCode(context: Context) {
-//    ContextCompat.startActivity(
-//        context,
-//        Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(string.source_code_url))),
-//        null
-//    )
-//}
+
 
 @Composable
 fun DrawerItem(text: String, selected: Boolean, onClick: () -> Unit) {

@@ -69,46 +69,18 @@ fun CitySelect(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(
-                                Violet,
-                                VioletDegrade
-                            )
-                        )
-                    ),
             ) {
                 stickyHeader {
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                            .background(MaterialTheme.colors.background)
                     ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .scale(scaleY = 1F, scaleX = 01F)
-                                .background(
-                                    White,
-                                    shape = RoundedCornerShape(30.dp),
-                                )
-                                .padding(0.dp)
-                                .height(45.dp), // Here I have decreased the height
-                        ) {
-                            Text(text = countries.value[selectedIndex.value].name,)
-                            Icon(
-                                Icons.Filled.ArrowDropDown,
-                                contentDescription = stringResource(string.country_selector_icon_label),
-                                modifier = Modifier
-                                    .clickable(onClick = { setExpanded(true) })
-                            )
-
-                        }
-                        TextField(
+                        OutlinedTextField(
                             value = countries.value[selectedIndex.value].name,
-                            textStyle = MaterialTheme.typography.subtitle1,
-                            readOnly = false,
+                            readOnly = true,
                             onValueChange = {},
+                            label = { Text(stringResource(string.country_selector_label)) },
                             trailingIcon = {
                                 Icon(
                                     Icons.Filled.ArrowDropDown,
@@ -117,19 +89,13 @@ fun CitySelect(
                                         .clickable(onClick = { setExpanded(true) })
                                 )
                             },
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedLabelColor = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium)
+                            ),
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .scale(scaleY = 1F, scaleX = 01F)
-                                .background(
-                                    White,
-                                    shape = RoundedCornerShape(30.dp),
-                                )
-                                .padding(0.dp)
-                                .height(45.dp), // Here I have decreased the height
-                            shape = RoundedCornerShape(30.dp),
+                                .padding(16.dp)
                         )
-
-                        Spacer(modifier = Modifier.height(16.dp))
                         SearchBox(query.value, vm::setQuery)
                     }
                 }
@@ -148,7 +114,7 @@ fun CitySelect(
                                     vm.addCity(city.id)
                                 }
                             }
-                            .padding(horizontal = 8.dp, vertical = 8.dp))
+                            .padding(horizontal = 16.dp, vertical = 8.dp))
                     {
                         Text(
                             text = city.name,
@@ -174,7 +140,6 @@ fun CitySelectAppBar(onBackPress: () -> Boolean) {
             title = {
                 Text(stringResource(string.city_select_app_bar_title))
             },
-            elevation = 0.dp,
             navigationIcon = {
                 IconButton(onClick = { onBackPress() }) {
                     Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(string.back_button_label))
@@ -187,7 +152,7 @@ fun CitySelectAppBar(onBackPress: () -> Boolean) {
 @Composable
 fun SearchBox(query: String, setQuery: (String) -> Unit) {
     val requester = FocusRequester()
-    TextField(
+    OutlinedTextField(
         value = query,
         onValueChange = setQuery,
         trailingIcon = {
@@ -204,15 +169,8 @@ fun SearchBox(query: String, setQuery: (String) -> Unit) {
         },
         modifier = Modifier
             .fillMaxWidth()
-            .scale(scaleY = 1F, scaleX = 01F)
+            .padding(horizontal = 16.dp)
             .focusRequester(requester)
-            .background(
-                White,
-                shape = RoundedCornerShape(30.dp),
-            )
-            .padding(0.dp)
-            .height(45.dp), // Here I have decreased the height
-        shape = RoundedCornerShape(30.dp),
     )
     SideEffect {
         requester.requestFocus()

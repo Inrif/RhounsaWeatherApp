@@ -64,10 +64,7 @@ fun CurrentForecast(listState: LazyListState, current: Current?, alerts: List<Al
             }
             item {
 
-                Column(
-//
-
-                ) {
+                Column{
 
 
                     Row(
@@ -137,9 +134,6 @@ fun DialogDemo(showDialog: Boolean, setShowDialog: (Boolean) -> Unit, alerts: Li
         AlertDialog(
             onDismissRequest = {
             },
-//            title = {
-//                Text("Alert")
-//            },
             confirmButton = {
 
             },
@@ -165,7 +159,6 @@ fun DialogDemo(showDialog: Boolean, setShowDialog: (Boolean) -> Unit, alerts: Li
             },
             text = {
                 LazyColumn(
-//                    state = listState,
                     contentPadding = PaddingValues(1.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
@@ -181,35 +174,6 @@ fun DialogDemo(showDialog: Boolean, setShowDialog: (Boolean) -> Unit, alerts: Li
     }
 }
 
-@Composable
-fun FullScreenDialog(showDialog: Boolean, setShowDialog: (Boolean) -> Unit) {
-    if (showDialog) {
-        Dialog(
-            onDismissRequest = {
-            },
-        ) {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                shape = RoundedCornerShape(16.dp),
-                color = White
-            ) {
-                Box(
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        modifier = Modifier.align(Alignment.TopCenter),
-                        text = "top"
-                    )
-                    Text("center")
-                    Text(
-                        modifier = Modifier.align(Alignment.BottomCenter),
-                        text = "bottom"
-                    )
-                }
-            }
-        }
-    }
-}
 
 @Composable
 fun TimeUpdated(time: ZonedDateTime) {

@@ -18,7 +18,6 @@ interface ApiService {
         @Query("lon") lon: Double,
         @Query("units") units: String = "metric",
         @Query("exclude") exclude: String = "minutely",
-//        @Query("appid") appId: String = BuildConfig.OWM_API_KEY,
         @Query("appid") appId: String = "f218129264ba2288384cd29b3839d9f3"
     ): Result.Success
 }
